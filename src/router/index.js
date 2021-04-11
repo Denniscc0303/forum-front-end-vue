@@ -1,8 +1,8 @@
-// ./src/router.js
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import NotFound from '../views/NotFound.vue'
 import SignIn from '../views/SignIn.vue'
+import SignUp from '../views/SignUp.vue'
+import NotFound from '../views/NotFound.vue'
 import Restaurants from '../views/Restaurants.vue'
 
 Vue.use(VueRouter)
@@ -21,7 +21,7 @@ const routes = [
   {
     path: '/signup',
     name: 'sign-up',
-    component: () => import('../views/SignUp.vue')
+    component: SignUp
   },
   {
     path: '/restaurants',
@@ -39,19 +39,35 @@ const routes = [
     component: () => import('../views/RestaurantsTop.vue')
   },
   {
+    path: '/restaurants/:id',
+    name: 'restaurant',
+    component: () => import('../views/Restaurant.vue')
+  },
+  {
+    path: '/restaurants/:id/dashboard',
+    name: 'restaurant-dashboard',
+    component: () => import('../views/RestaurantDashboard.vue')
+  },
+  {
     path: '/users/top',
     name: 'users-top',
     component: () => import('../views/UsersTop.vue')
   },
   {
+    path: '/user/:id',
+    name: 'user',
+    component: () => import('../views/User.vue')
+  },
+  {
     path: '*',
     name: 'not-found',
     component: NotFound
-  }
+  },
 ]
 
 const router = new VueRouter({
   linkExactActiveClass: 'active',
   routes
 })
+
 export default router

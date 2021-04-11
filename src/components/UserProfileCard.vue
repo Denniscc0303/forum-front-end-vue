@@ -1,0 +1,67 @@
+<template>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img :src="user.image | emptyImage" width="300px" height="300px" />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ user.name }}
+          </h5>
+          <p class="card-text">
+            {{ user.email }}
+          </p>
+          <ul class="list-unstyled">
+            <li>
+              <strong>{{ user.Comments.length }}</strong> 已評論餐廳
+            </li>
+            <li>
+              <strong>{{ user.FavoritedRestaurants.length }}</strong> 收藏的餐廳
+            </li>
+            <li>
+              <strong>{{ user.Followings.length }}</strong> followings (追蹤者)
+            </li>
+            <li>
+              <strong>{{ user.Followers.length }}</strong> followers (追隨者)
+            </li>
+          </ul>
+          <a class="btn btn-primary"> Edit </a>
+          <button
+            v-if="isFollowed"
+            type="button"
+            class="btn btn-danger"
+            @click.stop.prevent="deleteFollowing(user.id)"
+          >
+            取消追蹤
+          </button>
+          <button
+            v-else
+            type="button"
+            class="btn btn-primary"
+            @click.stop.prevent="addFollowing(user.id)"
+          >
+            追蹤
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { emptyImageFilter } from "../utils/mixins";
+export default {
+  mixins: [emptyImageFilter],
+  props: {
+    user: {
+      type: Object,
+      require: true,
+    },
+    isFollowed: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>
