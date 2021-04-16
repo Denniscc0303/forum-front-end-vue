@@ -21,6 +21,7 @@
 import RestaurantDetail from "../components/RestaurantDetail";
 import RestaurantComments from "../components/RestaurantComments";
 import CreateComment from "../components/CreateComment";
+
 const dummyData = {
   restaurant: {
     id: 1,

@@ -26,7 +26,17 @@
               <strong>{{ user.Followers.length }}</strong> followers (追隨者)
             </li>
           </ul>
-          <a class="btn btn-primary"> Edit </a>
+          <router-link
+            :to="{
+              name: 'user-edit',
+              params: {
+                id: user.id,
+              },
+            }"
+            class="btn btn-primary"
+          >
+            Edit
+          </router-link>
           <button
             v-if="isFollowed"
             type="button"

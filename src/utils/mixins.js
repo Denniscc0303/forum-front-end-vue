@@ -8,10 +8,18 @@ export const fromNowFilter = {
   }
 }
 
+// export const emptyImageFilter = {
+//   filters: {
+//     emptyImage(value) {
+//       return value ? value : 'https://picsum.photos/100/100'
+//     }
+//   }
+// }
+
 export const emptyImageFilter = {
   filters: {
-    emptyImage(value) {
-      return value ? value : 'https://picsum.photos/100/100'
+    emptyImage(src) {
+      return src || 'https://via.placeholder.com/350x220/DFDFDF?text=No+Image'
     }
   }
 }
