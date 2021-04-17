@@ -2,8 +2,7 @@
   <div class="container py-5">
     <AdminNav />
 
-    <Spinner v-if="isLoading" />
-    <table v-else class="table">
+    <table class="table">
       <thead class="thead-dark">
         <tr>
           <th scope="col">#</th>
@@ -41,6 +40,7 @@
 import AdminNav from "./../components/AdminNav";
 import adminAPI from "./../apis/admin";
 import { Toast } from "./../utils/helpers";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -51,6 +51,9 @@ export default {
       users: [],
       isLoading: true,
     };
+  },
+  computed: {
+    ...mapState(["currentUser"]),
   },
   created() {
     this.fetchUsers();
